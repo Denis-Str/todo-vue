@@ -1,18 +1,42 @@
-# todo-app
+# Nuxt 3 Minimal Starter
 
-> A Vue.js project
+Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
 
-## Build Setup
+## Setup
 
-``` bash
-# install dependencies
+Make sure to install the dependencies:
+
+```bash
+# yarn
+yarn install
+
+# npm
 npm install
 
-# serve with hot reload at localhost:8080
-npm run dev
+# pnpm
+pnpm install --shamefully-hoist
+```
 
-# build for production with minification
+## Development Server
+
+Start the development server on http://localhost:3000
+
+```bash
+npm run dev
+```
+
+## Production
+
+Build the application for production:
+
+```bash
 npm run build
 ```
 
-For detailed explanation on how things work, consult the [docs for vue-loader](http://vuejs.github.io/vue-loader).
+Locally preview production build:
+
+```bash
+npm run preview
+```
+
+Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.

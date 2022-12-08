@@ -1,17 +1,17 @@
 <template lang="pug">
-  .todo-list
-    .content
-      ul.list
-        li.item(v-for="todo in todos")
-          todo-list-item(
-            :key="todo.id"
-            :todo="todo"
-          )
-    .footer
-      .footer-content
-        .counter {{ todos.length }} items left
-        .filter
-          todo-list-filter
+.todo-list
+  .content
+    ul.list
+      li.item(v-for="todo in todos")
+        todo-list-item(
+          :key="todo.id"
+          :todo="todo"
+        )
+  .footer
+    .footer-content
+      .counter {{ todos.length }} items left
+      .filter
+        todo-list-filter
 </template>
 
 <script>
@@ -31,7 +31,7 @@ export default {
 }
 </script>
 
-<style lang="scss"scope>
+<style lang="scss" scope>
   .list {
     font-size: 24px;
     border-bottom: 1px solid #ededed;

@@ -1,11 +1,11 @@
 <template lang="pug">
-  div
-    button(
-      v-for="filter in filters"
-      type="button"
-      :class="{active: currentFilter === filter}"
-      @click="filterTodosComponent(filter)"
-    ) {{ filter }}
+div
+  button(
+    v-for="filter in filters"
+    type="button"
+    :class="{active: currentFilter === filter}"
+    @click="filterTodosComponent(filter)"
+  ) {{ filter }}
 </template>
 
 <script>
@@ -22,7 +22,6 @@
     ...mapMutations(['filterTodos']),
     filterTodosComponent(filter) {
       this.currentFilter = filter;
-      // this.$emit('filterTodos', filter)
       this.filterTodos(filter)
     }
   }
@@ -31,7 +30,6 @@
 
 <style lang="scss">button {
   margin-right: 20px;
-  border: none;
   background: transparent;
   font-weight: 300;
   color: inherit;
