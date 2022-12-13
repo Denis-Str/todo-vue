@@ -1,29 +1,20 @@
 <template lang="pug">
-  .todo-input
-    div.error {{ validation.firstError('todo.name')}}
-    input(
-      type="text"
-      placeholder="Todo Name"
-      autofocus
-      :class="{'valid-error' : validation.hasError('todo.name')}"
-      v-model="todo.name"
-      @keydown.enter="addNewTodo"
-    ).input
+.todo-input
+  input(
+    type="text"
+    placeholder="Todo Name"
+    autofocus
+    v-model="todo.name"
+    @keydown.enter="addNewTodo"
+  ).input
 </template>
 
 <script>
-import {Validator} from 'simple-vue-validator';
-import {mapMutations} from 'vuex';
+import { mapMutations } from 'vuex';
 
 let uniqId = 0;
 
 export default {
-  mixins: [require('simple-vue-validator').mixin],
-  validators: {
-    'todo.name'(value) {
-      return Validator.value(value).required('Поле не может быть пустым');
-    }
-  },
   data() {
     return {
       todo: {
@@ -36,16 +27,10 @@ export default {
   methods: {
     ...mapMutations(['addTodo']), // мутация доступна как новый метод
     addNewTodo() {
-      this.$validate().then(sccess => {
-        if (!sccess) return;
-
-        uniqId++;
-        this.todo.id = uniqId;
-        // this.$emit('addTodo', {...this.todo});
-        this.addTodo({...this.todo});
-        this.todo.name = "";
-        this.validation.reset();
-      })
+      uniqId++;
+      this.todo.id = uniqId;
+      this.addTodo({...this.todo});
+      this.todo.name = "";
     }
   }
 }

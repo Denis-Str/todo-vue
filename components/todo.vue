@@ -1,26 +1,18 @@
 <template lang="pug">
-  div.todo
-    todo-input
-    todo-list(
-      v-if="todos.length > 0"
-      :todos="filteredTodos"
-    )
-    pre {{ todos }}
+div.todo
+  todo-input
+  todo-list(
+    v-if="show"
+    :todos="filteredTodos"
+  )
+  pre {{ todos }}
 </template>
 
 <script>
-import todoInput from './todoInput';
-import todoList from './todolist';
-import { mapState, mapGetters, mapActions } from 'vuex';
+import todoInput from '~/components/todoInput';
+import todoList from "~/components/todoList.vue";
 
 export default {
-  data() {
-    return {
-      // todos: [],
-      // filter: 'all'
-    }
-  },
-  
   components: {
     todoList,
     todoInput
@@ -28,22 +20,21 @@ export default {
 
   mounted() {
     setTimeout(() => {
-      console.log(this.todoId(3)) // передаем аргумент
+      // console.log(this.$store.getters('todoId', 3)) // передаем аргумент
     }, 5000);
-    this.fetchItems()
-  },
-
-  methods: {
-    ...mapActions(['fetchItems'])
+    // this.$store.dispatch.fetchItems();
   },
 
   computed: {
-    ...mapState({
-      todos: state => state.todos.todos,
-      filter: state => state.todos.filter
-    }),
-
-    ...mapGetters(['todoId']),
+    todos() {
+      return this.$store.state.todos;
+    },
+    filter() {
+      return this.$store.state.filter;
+    },
+    show() {
+      return this.todos.length > 0;
+    },
 
     filteredTodos() {
       switch(this.filter) {

@@ -1,23 +1,23 @@
 <template lang="pug">
-  .todo-item(:class="{ checked: todo.checked }")
-    label.label
-      .input-block
-        input(
-          type="checkbox"
-          @change="checkTodoItem"
-          :checked="todo.checked"
-        ).input
-      .title {{ todo.name }}
-    .button
-      router-link(
-        tag="button"
-        :to="`/view/${todo.name}`"
-      ).view &#10148;
-    .button
-      button(
-        type="button"
-        @click="removeTodoItem"
-      ).remove &#10008;
+.todo-item(:class="{ checked: todo.checked }")
+  label.label
+    .input-block
+      input(
+        type="checkbox"
+        @change="checkTodoItem"
+        :checked="todo.checked"
+      ).input
+    .title {{ todo.name }}
+  .button
+    router-link(
+      tag="button"
+      :to="`/view/${todo.name}`"
+    ).view &#10148;
+  .button
+    button(
+      type="button"
+      @click="removeTodoItem"
+    ).remove &#10008;
 </template>
 
 <script>
@@ -33,7 +33,6 @@
     methods: {
       ...mapMutations(['removeTodo', 'checkTodo']),
       removeTodoItem() {
-        // this.$emit('removeTodo', this.todo.id)
         this.removeTodo(this.todo.id)
       },
       checkTodoItem(e) {
@@ -41,7 +40,6 @@
           ...this.todo,
           checked: e.target.checked
         }
-        // this.$emit('checkTodo', todoItem)
         this.checkTodo(todoItem)
       }
     }
