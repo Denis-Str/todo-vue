@@ -9,17 +9,19 @@ div
 </template>
 
 <script>
-  import { mapMutations } from 'vuex';
+  import { mapActions } from 'pinia'
+  import { todosStore } from "~/store/todos";
 
- export default {
+
+  export default {
     data() {
       return {
         filters: ['all', 'active', 'completed'],
-      currentFilter: 'all'
+        currentFilter: 'all'
       }
   },
   methods: {
-    ...mapMutations(['filterTodos']),
+    ...mapActions(todosStore, ['filterTodos']),
     filterTodosComponent(filter) {
       this.currentFilter = filter;
       this.filterTodos(filter)

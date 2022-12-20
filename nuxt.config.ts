@@ -32,8 +32,18 @@ export default defineNuxtConfig({
     // Load a Node.js module directly (here it's a Sass file).  'bulma',  // CSS file in the project  '@/assets/style/main.style',  // SCSS file in the project
     '@/assets/style/main.scss',
   ],
+  modules: [
+    [
+      '@pinia/nuxt', {
+        autoImports: [
+          ['rootStore', 'todos']
+        ]
+      }
+    ]
+  ],
   plugins: [
-    '~/store/index.js'
+    // так подключается стор vuex
+    // '~/store/index.js'
   ],
   autoImports: true,
   components: {

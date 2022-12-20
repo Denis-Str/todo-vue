@@ -21,7 +21,8 @@
 </template>
 
 <script>
-  import {mapMutations} from 'vuex';
+  import { mapActions } from 'pinia'
+  import { todosStore } from "~/store/todos";
 
   export default {
     props: {
@@ -31,7 +32,7 @@
       }
     },
     methods: {
-      ...mapMutations(['removeTodo', 'checkTodo']),
+      ...mapActions(todosStore, ['removeTodo', 'checkTodo']),
       removeTodoItem() {
         this.removeTodo(this.todo.id)
       },
