@@ -5,7 +5,7 @@ div.todo
     v-if="show"
     :todos="filteredTodos"
   )
-  //pre {{ count }}
+  .test тестовое подключение стора {{ count }}
 </template>
 
 <script>

@@ -36,7 +36,8 @@ export default defineNuxtConfig({
     [
       '@pinia/nuxt', {
         autoImports: [
-          ['rootStore', 'todos']
+          'defineStore',
+          // ['rootStore', 'todos']
         ]
       }
     ]
