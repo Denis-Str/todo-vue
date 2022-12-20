@@ -1,52 +1,18 @@
+//подключение vuex
 import { createStore } from 'vuex'
 
-// import todos from './modules/todos';
-// Create a new store instance.
+// использование стора vuex
 const store = createStore({
-  // modules: {
-  //   todos
-  // },
   state() {
       return {
-        todos: [],
-        filter: 'all'
+        count: 0,
       }
   },
-    mutations: {
-      addTodo(state, todo) {
-        state.todos.push(todo)
-      },
-      removeTodo(state, todoId) {
-        state.todos = state.todos.filter(todo => todo.id !== todoId)
-      },
-      checkTodo(state, todo) {
-        state.todos = state.todos.map(item => (item.id === todo.id ? todo : item))
-      },
-      filterTodos(state, filter) {
-        state.filter = filter;
-      },
-      testMutations(state, payload) {
-        console.log('testMutations', payload)
-      }
-    },
-  actions: { // для подгрузки данных
-    fetchItems(store) {
-      store.commit('testMutations', 333) // вызов мутации
-      store.dispatch('anoterAction', 777) // вызов action из другого action
-      console.log(store)
-    },
-    anoterAction() {
-      console.log('another action');
-    }
-  },
-  getters: {// для получения значений
-    todoId: (state) => (id) => {
-      console.log(id);
-
-      return state.todos.filter(item => item.id === id)
-    }
-  }
+  mutations: {},
+  actions: {},
 })
+
+//так надо подключить стор vuex
 export default defineNuxtPlugin((nuxtApp) => {
   nuxtApp.vueApp.use(store);
   // Install the store instance as a plugin

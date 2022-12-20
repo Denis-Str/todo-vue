@@ -10,7 +10,8 @@
 </template>
 
 <script>
-import { mapMutations } from 'vuex';
+import { mapActions } from 'pinia'
+import { todosStore } from "~/store/todos";
 
 let uniqId = 0;
 
@@ -25,14 +26,14 @@ export default {
     }
   },
   methods: {
-    ...mapMutations(['addTodo']), // мутация доступна как новый метод
+    ...mapActions(todosStore, ['addTodo']),
     addNewTodo() {
       uniqId++;
       this.todo.id = uniqId;
       this.addTodo({...this.todo});
       this.todo.name = "";
     }
-  }
+  },
 }
 </script>
 

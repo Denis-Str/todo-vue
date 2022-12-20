@@ -3,10 +3,10 @@
   Todo
 </template>
 <script>
-import todo from '~/components/todo'
+import todo from '~/components/todo';
 
 export default {
-name: "todo",
+  name: "todo",
   components: {
     todo
   },

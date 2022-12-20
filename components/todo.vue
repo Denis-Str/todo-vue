@@ -5,12 +5,17 @@ div.todo
     v-if="show"
     :todos="filteredTodos"
   )
-  pre {{ todos }}
+  //pre {{ count }}
 </template>
 
 <script>
+import { mapState } from 'pinia';
+import { todosStore } from "~/store/todos";
+import { rootStore } from "~/store/defineStore";
+
 import todoInput from '~/components/todoInput';
 import todoList from "~/components/todoList.vue";
+
 
 export default {
   components: {
@@ -18,20 +23,14 @@ export default {
     todoInput
   },
 
-  mounted() {
-    setTimeout(() => {
-      // console.log(this.$store.getters('todoId', 3)) // передаем аргумент
-    }, 5000);
-    // this.$store.dispatch.fetchItems();
-  },
-
   computed: {
-    todos() {
-      return this.$store.state.todos;
-    },
-    filter() {
-      return this.$store.state.filter;
-    },
+    ...mapState(todosStore, {
+      todos: store => store.todos,
+      filter: store => store.filter,
+    }),
+    ...mapState(rootStore, {
+      count: store => store.count,
+    }),
     show() {
       return this.todos.length > 0;
     },
@@ -46,7 +45,7 @@ export default {
           return this.todos.filter(item => item.checked)
       }
     }
-  }
+  },
 }
 </script>
 
